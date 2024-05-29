@@ -1021,6 +1021,8 @@ class CropObject(object):
         if mask_string == 'None':
             return None
 
+        mask_string = mask_string.rstrip() # Remove trailing whitespace (present in the DoReMi dataset)
+
         values = []
         for kv in mask_string.split(' '):
             k_string, v_string = kv.split(':')

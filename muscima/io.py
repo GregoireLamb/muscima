@@ -327,7 +327,12 @@ def parse_cropobject_list(filename):
     logging.debug('XML parsed.')
     cropobject_list = []
 
-    for i, cropobject in enumerate(root.iter('CropObject')):
+    node_tag = 'CropObject'
+
+    if not list(root.iter(node_tag)):
+        node_tag = 'Node'
+
+    for i, cropobject in enumerate(root.iter(node_tag)):
         ######################################################
         # Parsing one CropObject
         logging.debug('Parsing CropObject {0}'.format(i))
